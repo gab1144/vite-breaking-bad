@@ -19,9 +19,11 @@ export default {
   },
   methods:{
     getCharacters(){
+      store.isLoaded = false;
       axios.get(store.apiUrl)
         .then(result=> {
           store.charactersListData=result.data;
+          store.isLoaded = true;
         })
         .catch(error => {
           console.log(error);
@@ -51,6 +53,7 @@ export default {
   </div>
   <div class="container">
     <CharacterList/>
+    
   </div>
 </template>
 
