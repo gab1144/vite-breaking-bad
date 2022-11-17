@@ -19,8 +19,14 @@ export default {
 
 <template>
 
-  <div class="container">
+  <div class="container character-area">
     <div class="row">
+      <div class="col character-number">
+        <span>Found {{store.charactersListData.length}} characters </span>
+      </div>
+    </div>
+
+    <div class="row character-list">
       <CharacterCard
         v-for="character of store.charactersListData"
         :key="character.id"
@@ -31,5 +37,20 @@ export default {
 
 
 <style lang="scss" scoped>
-  
+  @use '../styles/partials/variables' as *;
+  .character-area{
+    background-color: white;
+    padding: 50px;
+
+    .character-number{
+      background-color: $counter-color;
+      color: white;
+      height: 55px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+    }
+  }
+
 </style>

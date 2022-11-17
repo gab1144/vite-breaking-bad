@@ -23,7 +23,7 @@ export default {
 <style lang="scss" scoped>
   @use '../styles/partials/variables' as *;
   .custom-card{
-    padding: 15px;
+    padding: 20px;
     margin-bottom: 30px;
     height: 430px;
     background-color: $primary-color;

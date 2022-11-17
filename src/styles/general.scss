@@ -1,5 +1,7 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
+@import './partials/variables';
 
 body {
   color: white;
+  background-color: $primary-color;
 }
