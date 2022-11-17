@@ -9,12 +9,14 @@ export default {
 
 
 <template>
-  <div class="col-3">
+  <div class="col">
     <div class="custom-card">
       <div class="img-area">
         <img :src="character.img" :alt="character.name">
       </div>
-      <span>{{character.name}}</span>
+      <h5 class="name">{{character.name}}</h5>
+      <h5 class="tv-serie">Breaking Bad</h5>
+      <span class="status">{{character.status}}</span>
     </div>
   </div>
 </template>
@@ -23,12 +25,26 @@ export default {
 <style lang="scss" scoped>
   @use '../styles/partials/variables' as *;
   .custom-card{
-    padding: 20px;
+    padding: 15px;
     margin-bottom: 30px;
     height: 430px;
     background-color: $primary-color;
     img{
       width: 100%;
+    }
+    span {
+      display: block;
+    }
+    .name{
+      font-weight: 700;
+      margin-top: 20px;
+    }
+    .tv-serie, .status{
+      color: $text-card-color;
+    }
+    .tv-serie{
+      border-top: 30px;
+      border-bottom: 10px;
     }
   }
 </style>

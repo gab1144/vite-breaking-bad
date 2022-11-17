@@ -26,7 +26,7 @@ export default {
       </div>
     </div>
 
-    <div class="row character-list">
+    <div class="row row-cols-5 character-list">
       <CharacterCard
         v-for="character of store.charactersListData"
         :key="character.id"

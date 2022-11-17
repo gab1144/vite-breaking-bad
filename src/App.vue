@@ -3,12 +3,14 @@
 import axios from 'axios';
 import {store} from './data/store';
 import CharacterList from './components/CharacterList.vue';
+import AppHeader from './components/AppHeader.vue';
 
 
 export default {
   name: 'App',
   components:{
-    CharacterList
+    CharacterList,
+    AppHeader
   },
   data(){
     return{
@@ -33,6 +35,8 @@ export default {
 </script>
 
 <template>
+
+  <AppHeader/>
 
   <div class="container">
     <div class="row">
