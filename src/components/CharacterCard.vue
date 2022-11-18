@@ -15,7 +15,7 @@ export default {
         <img :src="character.img" :alt="character.name">
       </div>
       <h5 class="name">{{character.name}}</h5>
-      <h5 class="tv-serie">Breaking Bad</h5>
+      <h5 class="tv-serie">{{character.category}}</h5>
       <span class="status">{{character.status}}</span>
     </div>
   </div>

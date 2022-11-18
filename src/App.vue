@@ -4,13 +4,14 @@ import axios from 'axios';
 import {store} from './data/store';
 import CharacterList from './components/CharacterList.vue';
 import AppHeader from './components/AppHeader.vue';
-
+import AppSelectCategory from './components/AppSelectCategory.vue';
 
 export default {
   name: 'App',
   components:{
     CharacterList,
-    AppHeader
+    AppHeader,
+    AppSelectCategory
   },
   data(){
     return{
@@ -20,7 +21,11 @@ export default {
   methods:{
     getCharacters(){
       store.isLoaded = false;
-      axios.get(store.apiUrl)
+      axios.get(store.apiUrl, {
+        params: {
+          category: store.categorySelected
+        }
+      })
         .then(result=> {
           store.charactersListData=result.data;
           store.isLoaded = true;
@@ -42,13 +47,7 @@ export default {
 
   <div class="container">
     <div class="row">
-      <div class="col-2 select-area">
-        <select class="form-select">
-          <option selected>Select category</option>
-          <option value="1">Breaking Bad</option>
-          <option value="2">Better Call Saul</option>
-        </select>
-      </div>
+      <AppSelectCategory @startSearch="getCharacters()"/>
     </div>
   </div>
   <div class="container">
@@ -60,7 +59,5 @@ export default {
 
 <style lang="scss">
   @use './styles/general' as *;
-  .select-area {
-    padding: 20px;
-  }
+  
 </style>
