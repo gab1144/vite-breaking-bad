@@ -9,7 +9,7 @@ export default {
   },
   computed:{
     characterNumber(){
-      return store.charactersListData.length;
+      return `Found ${store.charactersListData.length} characters`;
     }
   }
 }
@@ -18,7 +18,7 @@ export default {
 
 <template>
     <div class="col character-number">
-      <span>Found {{characterNumber}} characters </span>
+      <span>{{characterNumber}}</span>
     </div>
 </template>
 
