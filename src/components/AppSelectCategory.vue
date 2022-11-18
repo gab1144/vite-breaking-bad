@@ -6,17 +6,21 @@ export default {
   name: 'AppSelectCategory',
   data(){
     return{
-      selection: "",
       store
     }
   },
   methods:{
-    changeCategory(){
-      store.categorySelected = this.selection;
-    },
     changeSelection(){
-      this.changeCategory();
       this.$emit("startSearch")
+    }
+  },
+  computed:{
+    firstOption(){
+      if(store.categorySelected !== ""){
+        return "All categories";
+      } else {
+        return "Select category";
+      }
     }
   }
 }
@@ -25,8 +29,8 @@ export default {
 
 <template>
   <div class="col-2 select-area">
-        <select class="form-select" @change="changeSelection()" v-model="selection">
-          <option selected value="">Select category</option>
+        <select class="form-select" @change="changeSelection()" v-model="store.categorySelected">
+          <option selected value="">{{firstOption}}</option>
           <option v-for="(category, index) of store.categories" :key="index" :value="category">{{category}}</option>
         </select>
       </div>
