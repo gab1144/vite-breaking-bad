@@ -9,11 +9,6 @@ export default {
       store
     }
   },
-  methods:{
-    changeSelection(){
-      this.$emit("startSearch")
-    }
-  },
   computed:{
     firstOption(){
       if(store.categorySelected !== ""){
@@ -29,7 +24,7 @@ export default {
 
 <template>
   <div class="col-2 select-area">
-        <select class="form-select" @change="changeSelection()" v-model="store.categorySelected">
+        <select class="form-select" @change="$emit('startSearch')" v-model="store.categorySelected">
           <option selected value="">{{firstOption}}</option>
           <option v-for="(category, index) of store.categories" :key="index" :value="category">{{category}}</option>
         </select>
