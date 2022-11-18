@@ -5,13 +5,16 @@ import {store} from './data/store';
 import CharacterList from './components/CharacterList.vue';
 import AppHeader from './components/AppHeader.vue';
 import AppSelectCategory from './components/AppSelectCategory.vue';
+import AppLoading from './components/AppLoading.vue';
+
 
 export default {
   name: 'App',
   components:{
     CharacterList,
     AppHeader,
-    AppSelectCategory
+    AppSelectCategory,
+    AppLoading
   },
   data(){
     return{
@@ -45,14 +48,20 @@ export default {
 
   <AppHeader/>
 
-  <div class="container">
+  <div class="container" v-if="store.isLoaded">
     <div class="row">
       <AppSelectCategory @startSearch="getCharacters()"/>
     </div>
   </div>
+
   <div class="container">
-    <CharacterList/>
+    <CharacterList v-if="store.isLoaded"/>
     
+    <div class="row"  v-if="!store.isLoaded">
+      <div class="col">
+        <AppLoading/>
+      </div>
+    </div>
   </div>
 </template>
 

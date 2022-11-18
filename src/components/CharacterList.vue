@@ -2,14 +2,12 @@
 
 import {store} from '../data/store';
 import CharacterCard from './CharacterCard.vue';
-import AppLoading from './AppLoading.vue';
 import ResultsCounter from './ResultsCounter.vue';
 
 export default {
   name: 'CharacterList',
   components:{
     CharacterCard,
-    AppLoading,
     ResultsCounter
   },
   data(){
@@ -25,18 +23,11 @@ export default {
 
   <div class="container character-area">
 
-    <div class="row"  v-if="!store.isLoaded">
-      <div class="col">
-        <AppLoading/>
-      </div>
-    </div>
-
-
-    <div class="row" v-if="store.isLoaded">
+    <div class="row">
       <ResultsCounter/>
     </div>
 
-    <div class="row row-cols-5 character-list" v-if="store.isLoaded">
+    <div class="row row-cols-5 character-list">
       <CharacterCard
         v-for="character of store.charactersListData"
         :key="character.id"
