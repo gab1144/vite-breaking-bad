@@ -6,13 +6,13 @@ export default {
   name: 'AppSelectCategory',
   data(){
     return{
-      selection: "Select Category",
+      selection: "",
       store
     }
   },
   methods:{
     changeCategory(){
-      store.categorySelected = store.categories[this.selection];
+      store.categorySelected = this.selection;
     },
     changeSelection(){
       this.changeCategory();
@@ -26,9 +26,8 @@ export default {
 <template>
   <div class="col-2 select-area">
         <select class="form-select" @change="changeSelection()" v-model="selection">
-          <option selected>Select category</option>
-          <option value="0">Breaking Bad</option>
-          <option value="1">Better Call Saul</option>
+          <option selected value="">Select category</option>
+          <option v-for="(category, index) of store.categories" :key="index" :value="category">{{category}}</option>
         </select>
       </div>
 </template>
